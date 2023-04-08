@@ -40,13 +40,11 @@ def main():
     print("please define MILUAI_PWD environment variable")
     return
   with HTTPServer(('', args.port), Handler) as server:
-    print(f"listening on port {args.port}")
     print(f"pid: {os.getpid()}")
     server.socket = ssl.wrap_socket(server.socket, certfile=f"{os.path.dirname(__file__)}/server.pem", server_side=True)
     sa = server.socket.getsockname()
     print("Serving HTTP on", sa[0], "port", sa[1], "...")
     server.serve_forever()
-    print("ssss")
 
 if __name__ == "__main__":
   main()
