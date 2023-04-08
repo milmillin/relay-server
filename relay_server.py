@@ -3,6 +3,7 @@ from urllib.parse import urlparse, parse_qs
 from subprocess import STDOUT, check_output
 import argparse
 import os
+import ssl
 
 class Handler(BaseHTTPRequestHandler):
   def __init__(self, request, client_address, server):
@@ -40,6 +41,7 @@ def main():
     return
   with HTTPServer(('', args.port), Handler) as server:
     print(f"listening on port {args.port}")
+    server.socket = ssl.wrap_socket(server.socket, certfile="../server.pem", server_side=True)
     server.serve_forever()
 
 if __name__ == "__main__":
