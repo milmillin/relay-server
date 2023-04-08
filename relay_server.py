@@ -18,7 +18,7 @@ class Handler(BaseHTTPRequestHandler):
       print(pwd, self.pwd)
       if pwd != self.pwd:
         raise Exception("wrong password")
-      res = check_output(cmd, stderr=STDOUT, timeout=1, shell=True)
+      res = check_output(cmd, stderr=STDOUT, timeout=5, shell=True)
       self.send_response(200)
       self.send_header('Content-type','text/plain')
       self.end_headers()
