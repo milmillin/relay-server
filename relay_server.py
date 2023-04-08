@@ -41,7 +41,7 @@ def main():
     return
   with HTTPServer(('', args.port), Handler) as server:
     print(f"listening on port {args.port}")
-    server.socket = ssl.wrap_socket(server.socket, certfile="../server.pem", server_side=True)
+    server.socket = ssl.wrap_socket(server.socket, certfile="server.pem", server_side=True)
     server.serve_forever()
 
 if __name__ == "__main__":
