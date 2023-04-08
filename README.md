@@ -4,7 +4,9 @@
 
 To generate a server.pem file, you will need to follow these general steps:
 
-1. Set `MILUAI_PWD` environment variable to your password
+1. Set `MILUAI_PWD` environment variable to your password by adding the following line to your `~/.bashrc`
+
+   ```export MILUAI_PWD=1234```
 
 2. Install OpenSSL on your server if it's not already installed.
 
@@ -35,6 +37,14 @@ To generate a server.pem file, you will need to follow these general steps:
 This will create a `server.pem` file in the directory where you ran the commands.
 
 Note that the exact commands and steps may vary depending on your server configuration and requirements. It's also important to note that self-signed certificates are not suitable for production environments and should only be used for testing or development purposes.
+
+### Add to crontab (optional)
+
+This will add a cron task that runs every minute.
+
+```
+./install-cronjob.sh PORT
+```
 
 ## Usage
 
